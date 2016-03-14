@@ -16,6 +16,11 @@ public class SimpleExpression implements Expression {
     }
 
     @Override
+    public String getStringExpression() {
+        return expression;
+    }
+
+    @Override
     public String generate() {
         return null;
     }

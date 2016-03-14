@@ -17,6 +17,11 @@ public class ComplexExpression implements Expression {
     }
 
     @Override
+    public String getStringExpression() {
+        return null;
+    }
+
+    @Override
     public String generate() {
         return null;
     }

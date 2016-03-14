@@ -11,6 +11,6 @@ public class PlusQuantifierTest {
     @Test
     public void createPlusQuantifierTest() {
         Quantifier quantifier = new PlusQuantifier();
-        Assert.assertTrue(quantifier.getValue() > 1);
+        Assert.assertTrue(quantifier.getValue() >= 1);
     }
 }

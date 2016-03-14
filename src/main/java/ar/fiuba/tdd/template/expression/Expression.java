@@ -5,4 +5,6 @@ package ar.fiuba.tdd.template.expression;
  */
 public interface Expression {
     String generate();
+
+    String getStringExpression();
 }

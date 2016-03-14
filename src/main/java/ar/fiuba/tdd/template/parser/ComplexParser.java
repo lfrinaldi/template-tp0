@@ -2,6 +2,7 @@ package ar.fiuba.tdd.template.parser;
 
 import ar.fiuba.tdd.template.expression.Expression;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,6 +12,7 @@ public class ComplexParser implements Parser {
 
     @Override
     public List<Expression> parse(String regex) {
-        return null;
+        List<Expression> expressions = new ArrayList<>();
+        return expressions;
     }
 }

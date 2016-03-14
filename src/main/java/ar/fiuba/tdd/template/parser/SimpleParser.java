@@ -17,12 +17,23 @@ public class SimpleParser implements Parser {
     @Override
     public List<Expression> parse(String regex) {
         ArrayList<Expression> expressions = new ArrayList<>();
-        return null;
+        String stringToParse = regex;
+        while (stringToParse.length() > 0) {
+            Expression expression = searchNextLiteralExpression(stringToParse);
+            expressions.add(expression);
+            stringToParse = stringToParse.substring(expression.getStringExpression().length());
+        }
+        return expressions;
     }
 
-    private Expression searchNextLiteralExpression(String regex){
+    private Expression searchNextLiteralExpression(String regex) {
         int firstQuantifier = getIndexFirstQuantifier(regex);
-        String literal = regex.substring(0,firstQuantifier);
+        String literal;
+        if (firstQuantifier == -1) {
+            literal = regex;
+        } else {
+            literal = regex.substring(0, firstQuantifier);
+        }
         return new SimpleExpression(literal);
     }
 

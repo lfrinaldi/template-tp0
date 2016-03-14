@@ -9,8 +9,14 @@ import org.junit.Test;
 public class ComplexExpressionTest {
 
     @Test
-    public void createExpressionTest() {
+    public void generateComplexExpressionTest() {
         Expression expression = new ComplexExpression();
         Assert.assertTrue(expression.generate() == null);
+    }
+
+    @Test
+    public void getComplexExpressionStringTest() {
+        Expression expression = new ComplexExpression();
+        Assert.assertTrue(expression.getStringExpression() == null);
     }
 }

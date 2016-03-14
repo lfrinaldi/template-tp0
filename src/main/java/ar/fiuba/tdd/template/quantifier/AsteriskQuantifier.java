@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class AsteriskQuantifier implements Quantifier {
 
-    private static int HIGH = 2;
+    private static int HIGH = 10;
     private static int LOW = 0;
 
 
