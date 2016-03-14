@@ -7,9 +7,6 @@ import ar.fiuba.tdd.template.expression.Expression;
  */
 public class ComplexParser implements Parser {
 
-    public ComplexParser() {
-    }
-
     @Override
     public Expression parse(String regex) {
         return null;

@@ -6,13 +6,13 @@ import java.util.Random;
  * Created by leandro on 13/03/16.
  */
 public class PlusQuantifier implements Quantifier {
-    private String quantifier;
 
-    public PlusQuantifier() {
-    }
+    private static int HIGH = 10;
+    private static int LOW = 1;
 
     @Override
     public Integer getValue() {
-        return null;
+        Random random = new Random();
+        return random.nextInt(HIGH - LOW) + LOW;
     }
 }

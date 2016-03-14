@@ -7,12 +7,10 @@ import ar.fiuba.tdd.template.quantifier.Quantifier;
  */
 public class SimpleExpression implements Expression {
 
-    private String expression;
-    private Quantifier quantifier;
+    //private Quantifier quantifier;
 
-    public SimpleExpression(String expression, Quantifier quantifier) {
-        this.expression = expression;
-        this.quantifier = quantifier;
+    public SimpleExpression(/*Quantifier quantifier*/) {
+        //this.quantifier = quantifier;
     }
 
     @Override

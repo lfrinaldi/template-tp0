@@ -5,10 +5,11 @@ import java.util.Random;
 /**
  * Created by leandro on 13/03/16.
  */
-public class InterrogationQuantifier implements Quantifier {
+public class AsteriskQuantifier implements Quantifier {
 
-    private static int HIGH = 10;
+    private static int HIGH = 1;
     private static int LOW = 0;
+
 
     @Override
     public Integer getValue() {
