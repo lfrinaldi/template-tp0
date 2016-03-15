@@ -11,6 +11,7 @@ public class AsteriskQuantifierTest {
     @Test
     public void createAsteriskQuantifier() {
         Quantifier quantifier = new AsteriskQuantifier();
-        Assert.assertTrue(quantifier.getValue() >= 0);
+        Assert.assertTrue(quantifier.getRepetitions() >= 0);
+        Assert.assertTrue(quantifier.toString().equals("*"));
     }
 }

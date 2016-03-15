@@ -11,6 +11,7 @@ public class DefaultQuantifierTest {
     @Test
     public void createDefaultQuantifier() {
         Quantifier quantifier = new DefaultQuantifier();
-        Assert.assertTrue(quantifier.getValue() == 1);
+        Assert.assertTrue(quantifier.getRepetitions() == 1);
+        Assert.assertTrue(quantifier.toString().equals(""));
     }
 }

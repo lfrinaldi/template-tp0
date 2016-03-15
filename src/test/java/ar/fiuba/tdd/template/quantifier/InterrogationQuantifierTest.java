@@ -11,6 +11,7 @@ public class InterrogationQuantifierTest {
     @Test
     public void createInterrogationQuantifierTest() {
         Quantifier quantifier = new InterrogationQuantifier();
-        Assert.assertTrue(quantifier.getValue() >= 0);
+        Assert.assertTrue(quantifier.getRepetitions() >= 0);
+        Assert.assertTrue(quantifier.toString().equals("?"));
     }
 }
