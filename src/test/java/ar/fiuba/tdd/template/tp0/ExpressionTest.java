@@ -11,7 +11,7 @@ public class ExpressionTest {
     @Test
     public void createExpressionTest() {
         String regex = "a";
-        Expression expression = new Expression(regex);
+        Expression expression = new Expression(regex, new Quantifier(Constants.EMPTY_STRING));
         Assert.assertTrue(expression.getExpression().equals(regex));
     }
 }

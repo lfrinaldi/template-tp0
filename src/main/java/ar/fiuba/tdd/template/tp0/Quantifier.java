@@ -33,4 +33,6 @@ public class Quantifier {
     public String getQuantifier() {
         return quantifier;
     }
+
+
 }
