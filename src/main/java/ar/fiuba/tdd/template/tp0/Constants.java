@@ -6,7 +6,7 @@ package ar.fiuba.tdd.template.tp0;
 public class Constants {
     public static final int MAX_REPETITIONS = 10;
 
-    //public final static String DOT = ".";
+    public static final String DOT = ".";
     public static final String INTERROGATION = "?";
     public static final String ASTERISK = "*";
     public static final String PLUS = "+";

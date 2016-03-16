@@ -11,13 +11,13 @@ import java.util.List;
 public class ParserTest {
 
     @Test
-    public void parseEmptyString(){
+    public void parseEmptyString() {
         Parser parser = new Parser();
         Assert.assertTrue(parser.parse(Constants.EMPTY_STRING).size() == 0);
     }
 
     @Test
-    public void parseLiteralWithQuantifierString(){
+    public void parseLiteralWithQuantifierString() {
         Parser parser = new Parser();
         String expression = "a*";
         List<Expression> list = parser.parse(expression);
@@ -32,7 +32,7 @@ public class ParserTest {
     }
 
     @Test
-    public void parseLiteralWithoutQuantifierString(){
+    public void parseLiteralWithoutQuantifierString() {
         Parser parser = new Parser();
         String expression = "a";
         List<Expression> list = parser.parse(expression);
@@ -47,7 +47,7 @@ public class ParserTest {
     }
 
     @Test
-    public void parseSetWithoutQuantifiersString(){
+    public void parseSetWithoutQuantifiersString() {
         Parser parser = new Parser();
         String expression = "[aaa]";
         List<Expression> list = parser.parse(expression);
