@@ -13,8 +13,11 @@ public class Parser {
 
     public List<Expression> parse(String regex) {
         ArrayList<Expression> expressions = new ArrayList<>();
-        boolean shouldEscape = false;
+        return parseString(regex, expressions);
+    }
 
+    private List<Expression> parseString(String regex, List<Expression> expressions) {
+        boolean shouldEscape = false;
         for (int i = 0; i < regex.length(); i++) {
             String character = String.valueOf(regex.charAt(i));
             if (shouldEscape || (!character.equals(Constants.OPEN_SQUARE_BRACKET))
@@ -53,12 +56,30 @@ public class Parser {
     }
 
     private int parseSet(String set, List<Expression> expressions) {
-        return 0;
+        String character = String.valueOf(set.charAt(set.length() - 1));
+        int end = set.length() - 1;
+        if (isQuantifier(character)) {
+            end--;
+        } else {
+            character = Constants.EMPTY_STRING;
+        }
+        String expression = set.substring(1, end);
+        expressions.add(new Expression(expression, new Quantifier(character)));
+
+        return end;
     }
 
     private String firstSet(String expression) {
-        int end = expression.indexOf(Constants.CLOSE_SQUARE_BRACKET);
+        int end = expression.indexOf(Constants.CLOSE_SQUARE_BRACKET) + 1;
+        String set;
+        if ((expression.length() - 1) > end) {
+            String quantifier = String.valueOf(expression.charAt(end + 1));
+            if (!isQuantifier(quantifier)) {
+                end++;
+            }
+        }
         return expression.substring(0, end);
+
     }
 
     private String getQuantifier(String expression) {

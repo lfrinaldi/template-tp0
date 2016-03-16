@@ -46,4 +46,16 @@ public class ParserTest {
         Assert.assertTrue(list.size() == 3);
     }
 
+    @Test
+    public void parseSetWithoutQuantifiersString(){
+        Parser parser = new Parser();
+        String expression = "[aaa]";
+        List<Expression> list = parser.parse(expression);
+        Assert.assertTrue(list.size() == 1);
+        Assert.assertTrue(list.get(0).getExpression().equals("aaa"));
+        expression = "ab[aa]";
+        list = parser.parse(expression);
+        Assert.assertTrue(list.size() == 3);
+        Assert.assertTrue(list.get(2).getExpression().equals("aa"));
+    }
 }
