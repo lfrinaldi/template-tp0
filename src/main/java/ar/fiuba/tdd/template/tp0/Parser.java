@@ -3,6 +3,8 @@ package ar.fiuba.tdd.template.tp0;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Created by leandro on 15/03/16.
@@ -12,6 +14,7 @@ public class Parser {
             .INTERROGATION, Constants.ASTERISK));
 
     public List<Expression> parse(String regex) {
+        validateRegex(regex);
         ArrayList<Expression> expressions = new ArrayList<>();
         return parseString(regex, expressions);
     }
@@ -22,12 +25,7 @@ public class Parser {
             String character = String.valueOf(regex.charAt(i));
             if (shouldEscape || (!character.equals(Constants.OPEN_SQUARE_BRACKET))
                     && (!character.equals(Constants.ESCAPE))) {
-                String possibleLiteral;
-                if (i < regex.length() - 1) {
-                    possibleLiteral = regex.substring(i, i + Constants.SIZE_LITERAL_WITH_QUANTIFIER);
-                } else {
-                    possibleLiteral = character;
-                }
+                String possibleLiteral = getPossibleLiteral(i, regex);
                 i += parseLiteral(possibleLiteral, expressions);
                 shouldEscape = false;
             } else {
@@ -39,6 +37,17 @@ public class Parser {
             }
         }
         return expressions;
+    }
+
+    private String getPossibleLiteral(int currentOffset, String regex) {
+        String possibleLiteral;
+        String character = String.valueOf(regex.charAt(currentOffset));
+        if (currentOffset < regex.length() - 1) {
+            possibleLiteral = regex.substring(currentOffset, currentOffset + Constants.SIZE_LITERAL_WITH_QUANTIFIER);
+        } else {
+            possibleLiteral = character;
+        }
+        return possibleLiteral;
     }
 
     private boolean isQuantifier(String character) {
@@ -71,7 +80,6 @@ public class Parser {
 
     private String firstSet(String expression) {
         int end = expression.indexOf(Constants.CLOSE_SQUARE_BRACKET) + 1;
-        String set;
         if ((expression.length() - 1) > end) {
             String quantifier = String.valueOf(expression.charAt(end + 1));
             if (!isQuantifier(quantifier)) {
@@ -93,6 +101,10 @@ public class Parser {
             quantifier = Constants.EMPTY_STRING;
         }
         return quantifier;
+    }
+
+    private void validateRegex(String regex) throws PatternSyntaxException {
+        Pattern.compile(regex);
     }
 
 
