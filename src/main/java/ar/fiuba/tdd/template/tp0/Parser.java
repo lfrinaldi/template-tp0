@@ -67,22 +67,24 @@ public class Parser {
     private int parseSet(String set, List<Expression> expressions) {
         String character = String.valueOf(set.charAt(set.length() - 1));
         int end = set.length() - 1;
+        int size = end;
         if (isQuantifier(character)) {
             end--;
+            size++;
         } else {
             character = Constants.EMPTY_STRING;
         }
         String expression = set.substring(1, end);
         expressions.add(new Expression(expression, new Quantifier(character)));
 
-        return end;
+        return size;
     }
 
     private String firstSet(String expression) {
         int end = expression.indexOf(Constants.CLOSE_SQUARE_BRACKET) + 1;
-        if ((expression.length() - 1) > end) {
-            String quantifier = String.valueOf(expression.charAt(end + 1));
-            if (!isQuantifier(quantifier)) {
+        if ((expression.length()) > end) {
+            String quantifier = String.valueOf(expression.charAt(end));
+            if (isQuantifier(quantifier)) {
                 end++;
             }
         }

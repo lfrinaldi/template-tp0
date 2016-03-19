@@ -26,9 +26,9 @@ public class ExpressionTest {
 
     @Test
     public void generateDotStringTest() {
-        String regex = "...";
+        String regex = ".";
         Expression expression = new Expression(regex, new Quantifier(Constants.EMPTY_STRING));
         String generatedString = expression.generate(MAX);
-        Assert.assertTrue(generatedString.length() == 3);
+        Assert.assertTrue(generatedString.length() == 1);
     }
 }

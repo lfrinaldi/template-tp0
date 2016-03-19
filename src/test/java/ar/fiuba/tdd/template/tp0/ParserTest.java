@@ -42,7 +42,6 @@ public class ParserTest {
         list = parser.parse(expression);
         Assert.assertTrue(list.size() == 3);
         expression = "ab\\f";
-        System.out.println(expression);
         list = parser.parse(expression);
         Assert.assertTrue(list.size() == 3);
     }

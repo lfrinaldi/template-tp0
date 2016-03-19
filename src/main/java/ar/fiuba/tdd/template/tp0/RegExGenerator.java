@@ -17,7 +17,7 @@ public class RegExGenerator {
         List<Expression> expressions = parser.parse(regEx);
         List<String> generatedStrings = new ArrayList<>();
         for (int i = 0; i < numberOfResults; ++i) {
-            generate(expressions);
+            generatedStrings.add(generate(expressions));
         }
         return generatedStrings;
     }

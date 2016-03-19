@@ -22,16 +22,37 @@ public class Expression {
     }
 
     public String generate(int maxLength) {
-        final String generatedString = expression.replace(Constants.DOT, createRandomString());
-        final int limit;
+        final String generatedString = generateString();
+        final int limit = calculateRepetitions(maxLength);
+        return Stream.generate(() -> generatedString).limit(limit)
+                .collect(Collectors.joining());
+    }
+
+    private String generateString() {
+        String generatedString;
+        if (expression.length() > 1) {
+            Random random = new Random();
+            int charPosition = random.nextInt(expression.length());
+            generatedString = String.valueOf(expression.charAt(charPosition));
+        } else {
+            generatedString = replaceRandomChar(expression);
+        }
+        return generatedString;
+    }
+
+    private String replaceRandomChar(String expression) {
+        return expression.replace(Constants.DOT, createRandomString());
+    }
+
+    private int calculateRepetitions(int maxLength) {
+        int limit;
         int repetitions = quantifier.getRepetitions();
         if ((repetitions * expression.length()) > maxLength) {
             limit = maxLength / repetitions;
         } else {
             limit = quantifier.getRepetitions();
         }
-        return Stream.generate(() -> generatedString).limit(limit)
-                .collect(Collectors.joining());
+        return limit;
     }
 
     private String createRandomString() {
