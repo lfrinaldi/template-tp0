@@ -56,10 +56,8 @@ public class Parser {
 
     private int parseLiteral(String literal, List<Expression> expressions) {
         String possibleLiteral = String.valueOf(literal.charAt(0));
-        String possibleQuantifier;
-        Expression expression;
-        possibleQuantifier = getQuantifier(literal);
-        expression = new Expression(possibleLiteral, new Quantifier(possibleQuantifier));
+        String possibleQuantifier = getQuantifier(literal);
+        Expression expression = new Expression(possibleLiteral, new Quantifier(possibleQuantifier));
         expressions.add(expression);
         return expression.getExpression().length() - 1;
     }
