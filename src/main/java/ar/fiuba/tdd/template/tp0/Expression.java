@@ -4,9 +4,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Created by leandro on 15/03/16.
- */
+
 public class Expression {
 
     private String expression;
